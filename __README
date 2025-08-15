@@ -1,0 +1,8 @@
+IMPORTANT NOTE:
+
+after destroy, the cloudhsm custom keystore needs to be
+
+- disconnected, then
+- deleted
+
+MANUALLY

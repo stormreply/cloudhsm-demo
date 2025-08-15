@@ -1,0 +1,42 @@
+    "hsms": [
+      {
+        "vendor": "Marvell Semiconductors, Inc.",
+        "model": "NITROX-III CNN35XX-NFBE",
+        "serial-number": "5.3G1945-ICM000776",
+        "hardware-version-major": "5",
+        "hardware-version-minor": "3",
+        "firmware-version-major": "2",
+        "firmware-version-minor": "6",
+        "firmware-build-number": "16",
+        "firmware-id": "CNN35XX-NFBE-FW-2.06-16",
+        "fips-state": "2 [FIPS mode with single factor authentication]"
+      },
+      {
+        "vendor": "Marvell Semiconductors, Inc.",
+        "model": "NITROX-III CNN35XX-NFBE",
+        "serial-number": "5.3G1945-ICM000807",
+        "hardware-version-major": "5",
+        "hardware-version-minor": "3",
+        "firmware-version-major": "2",
+        "firmware-version-minor": "6",
+        "firmware-build-number": "16",
+        "firmware-id": "CNN35XX-NFBE-FW-2.06-16",
+        "fips-state": "2 [FIPS mode with single factor authentication]"
+      }
+    ]
+
+
+
+[root@ip-172-31-20-181 ~]# export CLOUDHSM_ROLE=admin
+[root@ip-172-31-20-181 ~]# export CLOUDHSM_PIN="admin:Bdo}-umT%C{Q%WPB"
+[root@ip-172-31-20-181 ~]# /opt/cloudhsm/bin/cloudhsm-cli user create
+error: the following required arguments were not provided:
+  --username <USERNAME>
+  --role <ROLE>
+
+Usage: cloudhsm-cli user create [OPTIONS] --username <USERNAME> --role <ROLE> [--password <PASSWORD>]
+
+
+❯ aws kms encrypt --key-id 9fa14ec5-155c-4c41-aa52-a709c3a29bf9 --plaintext fileb://ExamplePlaintextFile --output text --query CiphertextBlob
+
+An error occurred (KMSInvalidStateException) when calling the Encrypt operation: This KMS key is in an AWS CloudHSM cluster that does not contain any HSMs. The cluster must have at least one HSM. Add at least one HSM to the cluster and try the request again.
