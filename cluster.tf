@@ -1,6 +1,6 @@
 resource "aws_cloudhsm_v2_cluster" "cluster" {
-  hsm_type   = "hsm1.medium"   # only option atm, do not change
-  subnet_ids = [local.default_subnets[0], local.default_subnets[1]]
+  hsm_type   = "hsm1.medium" # only option atm, do not change
+  subnet_ids = [local.default_subnets["a"], local.default_subnets["b"]]
 }
 
 data "aws_cloudhsm_v2_cluster" "cluster" {
