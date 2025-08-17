@@ -23,15 +23,4 @@ locals {
     substr(az, -1, 1) => subnet.id
   }
 }
-
-output "availability_zones_names" {
-  value = local.azs.names
-}
-
-output "availability_zones" {
-  value = local.azs
-}
-
-output "availability_zone_a" {
-  value = local.azs["a"]
-}
+  
