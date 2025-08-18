@@ -23,4 +23,3 @@ locals {
     substr(az, -1, 1) => subnet.id
   }
 }
-  
