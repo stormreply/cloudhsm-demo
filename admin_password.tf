@@ -6,11 +6,15 @@ resource "random_string" "admin_password" {
   override_special = "!@#$%&*()-_=+[]{}<>?" # no ":"
 }
 
+resource "random_string" "suffix" {
+  length  = 5
+  special = false
+}
+
 resource "aws_secretsmanager_secret" "admin_password" {
   # checkov:skip=CKV2_AWS_57: "No rotation required for now"
   # checkov:skip=CKV_AWS_149: "Encrypt by default AWS kms key"
-  kms_key_id = aws_kms_key.hpc_cmk.key_id
-  name       = "${var.deployment.name}-admin-password-${random_string.suffix.result}" # needs suffix for re-creation
+  name = "${var.deployment.name}-admin-password-${random_string.suffix.result}" # needs suffix for re-creation
 }
 
 # Creating a AWS secret versions for database cluster admin account
