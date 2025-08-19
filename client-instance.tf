@@ -13,7 +13,7 @@ module "cloudhsm_client" {
     "cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id}"
   ]
   depends_on = [
-    aws_secretsmanager_secret_version.master_password
+    aws_secretsmanager_secret_version.admin_password
   ]
 }
 
@@ -88,18 +88,17 @@ locals {
 
   # activate cluster
   /opt/cloudhsm/bin/configure-cli -a "${aws_cloudhsm_v2_hsm.hsm_one.ip_address}"
-  /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "${random_string.admin.id}"
+  /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "${random_string.admin_password.id}"
 
   # create kmsuser
   export CLOUDHSM_ROLE=admin
-  export CLOUDHSM_PIN="admin:${random_string.admin.id}"
+  export CLOUDHSM_PIN="admin:${random_string.admin_password.id}"
   /opt/cloudhsm/bin/cloudhsm-cli user create \
     --username kmsuser \
     --role crypto-user \
-    --password "${random_string.kmsuser.id}"
+    --password "${random_string.kmsuser_password.id}"
   EOF
   tags = {
     Name = "${var.deployment.name}-controller"
   }
 }
-
