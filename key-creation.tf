@@ -23,7 +23,7 @@ resource "null_resource" "certificate_creation" {
         sleep 1
         aws cloudhsmv2 describe-clusters \
           --filters clusterIds=$CLUSTER_ID \
-          --query 'Clusters[].Certificates.cluster' \
+          --query 'Clusters[].Certificates.ClusterCsr' \
           --output text \
         > cluster.csr
       done
