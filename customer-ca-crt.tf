@@ -1,6 +1,6 @@
 data "local_file" "customer_ca_crt" {
   filename = "customerCA.crt"
   depends_on = [
-    null_resource.pending_cluster_activation
+    null_resource.create_certificates
   ]
 }
