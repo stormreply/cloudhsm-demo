@@ -15,9 +15,9 @@ resource "aws_secretsmanager_secret" "kmsuser_password" {
 # Creating a AWS secret versions for database cluster admin account
 resource "aws_secretsmanager_secret_version" "kmsuser_password" {
   secret_id     = aws_secretsmanager_secret.kmsuser_password.id
-  secret_string = random_password.kmsuser_password.result
+  secret_string = random_string.kmsuser_password.result
 }
 
 output "kmsuser_password" {
-  value = random_password.kmsuser_password.result
+  value = random_string.kmsuser_password.result
 }
