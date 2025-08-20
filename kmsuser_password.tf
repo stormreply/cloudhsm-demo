@@ -8,8 +8,8 @@ resource "random_string" "kmsuser_password" {
 
 # trivy:ignore:AVD-AWS-0098 (LOW): Secret explicitly uses the default key.
 resource "aws_secretsmanager_secret" "kmsuser_password" {
-  # checkov:skip=CKV2_AWS_57: "No rotation required for now"
   # checkov:skip=CKV_AWS_149: "Encrypt by default AWS kms key"
+  # checkov:skip=CKV2_AWS_57: "Ensure Secrets Manager secrets should have automatic rotation enabled"
   name = "${var.deployment.name}-kmsuser-password-${random_string.suffix.result}" # needs suffix for re-creation
 }
 

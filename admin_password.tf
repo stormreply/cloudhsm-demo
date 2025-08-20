@@ -14,6 +14,7 @@ resource "random_string" "suffix" {
 # trivy:ignore:AVD-AWS-0098 (LOW): Secret explicitly uses the default key.
 resource "aws_secretsmanager_secret" "admin_password" {
   # checkov:skip=CKV_AWS_149: "Encrypt by default AWS kms key"
+  # checkov:skip=CKV2_AWS_57: "Ensure Secrets Manager secrets should have automatic rotation enabled"
   name = "${var.deployment.name}-admin-password-${random_string.suffix.result}" # needs suffix for re-creation
 }
 
