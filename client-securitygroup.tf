@@ -1,3 +1,5 @@
+
+# TODO: do we still need this?
 resource "aws_security_group" "client" {
   name        = "${var.deployment.name}-client"
   description = "Security group for the ${var.deployment.name} client"

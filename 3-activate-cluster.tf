@@ -1,6 +1,11 @@
-resource "null_resource" "pending_cluster_activation" {
+resource "null_resource" "activate_cluster" {
   provisioner "local-exec" {
     command = <<-EOF
+
+    # activate cluster
+    /opt/cloudhsm/bin/configure-cli -a "${aws_cloudhsm_v2_hsm.hsm_one.ip_address}"
+    /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "${random_string.admin_password.id}"
+
     echo "activating - can take up to 4mins"
     while [ "$CLUSTER_STATE" != "ACTIVE" ] ; do
       sleep 5
@@ -12,10 +17,11 @@ resource "null_resource" "pending_cluster_activation" {
       )
       echo current status: $CLUSTER_STATE
     done
+
     EOF
     quiet   = true
   }
   depends_on = [
-    module.cloudhsm_client
+    null_resource.initialize_cluster
   ]
 }
