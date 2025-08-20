@@ -12,14 +12,10 @@ resource "null_resource" "pending_cluster_activation" {
       )
       echo current status: $CLUSTER_STATE
     done
-    # scp \
-    #   -i ${var.private_key_file} \
-    #   -o StrictHostKeyChecking=no \
-    #   ec2-user@${aws_instance.cloudhsm_client.public_ip}:/customerCA.crt ./customerCA.crt
     EOF
     quiet   = true
   }
   depends_on = [
-    aws_instance.cloudhsm_client
+    module.cloudhsm_client
   ]
 }
