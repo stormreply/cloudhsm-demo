@@ -6,6 +6,7 @@ resource "random_string" "kmsuser_password" {
   override_special = "!@#$%&*()-_=+[]{}<>?" # no ":"
 }
 
+# trivy:ignore:AVD-AWS-0098 (LOW): Secret explicitly uses the default key.
 resource "aws_secretsmanager_secret" "kmsuser_password" {
   # checkov:skip=CKV2_AWS_57: "No rotation required for now"
   # checkov:skip=CKV_AWS_149: "Encrypt by default AWS kms key"
