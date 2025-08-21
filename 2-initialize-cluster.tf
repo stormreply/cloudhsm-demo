@@ -2,6 +2,8 @@ resource "null_resource" "initialize_cluster" {
   provisioner "local-exec" {
     command = <<-EOF
 
+    CLUSTER_ID="${aws_cloudhsm_v2_cluster.cluster.cluster_id}"
+
     # initialize cluster
     aws cloudhsmv2 initialize-cluster \
       --cluster-id $CLUSTER_ID \
