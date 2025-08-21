@@ -1,4 +1,7 @@
 resource "null_resource" "create_kms_user" {
+  triggers = {
+    name = var.deployment.name
+  }
   provisioner "local-exec" {
     command = <<-EOF
 

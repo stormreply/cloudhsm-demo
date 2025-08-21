@@ -1,4 +1,7 @@
 resource "null_resource" "initialize_cluster" {
+  triggers = {
+    name = var.deployment.name
+  }
   provisioner "local-exec" {
     command = <<-EOF
 

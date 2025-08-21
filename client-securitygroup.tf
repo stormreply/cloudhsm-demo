@@ -1,5 +1,4 @@
 
-# TODO: do we still need this?
 # trivy:ignore:AVD-AWS-0104 (CRITICAL): Security group rule allows unrestricted egress to any IP address.
 # trivy:ignore:AVD-AWS-0107 (HIGH): Security group rule allows unrestricted ingress from any IP address.
 # trivy:ignore:AVD-AWS-0124 (LOW): Security group rule does not have a description.
@@ -10,13 +9,13 @@ resource "aws_security_group" "client" {
   # checkov:skip=CKV_AWS_382: "Ensure no security groups allow egress from 0.0.0.0:0 to port -1"
   name        = "${var.deployment.name}-client"
   description = "Security group for the ${var.deployment.name} client"
-  ingress {
-    from_port        = 22
-    to_port          = 22
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"] # TODO:
-    ipv6_cidr_blocks = ["::/0"]      # TODO:
-  }
+  # ingress {
+  #   from_port        = 22
+  #   to_port          = 22
+  #   protocol         = "tcp"
+  #   cidr_blocks      = ["0.0.0.0/0"] # TODO:
+  #   ipv6_cidr_blocks = ["::/0"]      # TODO:
+  # }
   ingress {
     from_port = 0
     to_port   = 0

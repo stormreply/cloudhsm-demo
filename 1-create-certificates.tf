@@ -1,15 +1,13 @@
 resource "null_resource" "create_certificates" {
+  triggers = {
+    name = var.deployment.name
+  }
   provisioner "local-exec" {
     command = <<-EOF
 
-    # get CloudHSM CLI
-    curl -O https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-cli-latest.el7.x86_64.rpm
-    yum -y install ./cloudhsm-cli-latest.el7.x86_64.rpm
-
-    # NOTE: apparently obsolete
-    # get AWS CloudHSM client, containing CloudHSM and Key Management Utility (CMU and KMU)
-    # curl -O https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm
-    # yum install ./cloudhsm-client-latest.el7.x86_64.rpm
+    # get CloudHSM CLI for Ubuntu 24.04
+    curl -O https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Noble/cloudhsm-cli_latest_u24.04_amd64.deb
+    sudo apt install ./cloudhsm-cli_latest_u24.04_amd64.deb
 
     CLUSTER_ID="${aws_cloudhsm_v2_cluster.cluster.cluster_id}"
     touch ClusterCsr.csr
