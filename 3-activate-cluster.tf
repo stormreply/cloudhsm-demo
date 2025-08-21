@@ -5,6 +5,8 @@ resource "null_resource" "activate_cluster" {
   provisioner "local-exec" {
     command = <<-EOF
 
+    ls -la /opt
+
     # activate cluster
     /opt/cloudhsm/bin/configure-cli -a "${aws_cloudhsm_v2_hsm.hsm_one.ip_address}"
     /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "${random_string.admin_password.id}"
@@ -22,7 +24,7 @@ resource "null_resource" "activate_cluster" {
     done
 
     EOF
-    quiet   = true
+    quiet   = false
   }
   depends_on = [
     null_resource.initialize_cluster

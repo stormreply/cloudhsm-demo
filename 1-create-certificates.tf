@@ -9,6 +9,8 @@ resource "null_resource" "create_certificates" {
     curl -O https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Noble/cloudhsm-cli_latest_u24.04_amd64.deb
     sudo apt install ./cloudhsm-cli_latest_u24.04_amd64.deb
 
+    ls -la /opt
+
     CLUSTER_ID="${aws_cloudhsm_v2_cluster.cluster.cluster_id}"
     touch ClusterCsr.csr
 
