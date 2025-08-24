@@ -2,12 +2,6 @@
 
 CLUSTER_ID=$1
 
-# get CloudHSM CLI for Ubuntu 24.04
-curl -O https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Noble/cloudhsm-cli_latest_u24.04_amd64.deb
-sudo apt install ./cloudhsm-cli_latest_u24.04_amd64.deb
-
-ls -la /opt
-
 touch ClusterCsr.csr
 
 # get cluster CSR

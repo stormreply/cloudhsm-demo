@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# get CloudHSM CLI for Ubuntu 24.04
+curl -O https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Noble/cloudhsm-cli_latest_u24.04_amd64.deb
+apt install ./cloudhsm-cli_latest_u24.04_amd64.deb
+
 CLUSTER_ID=$1 IP_ADDRESS=$2 PASSWORD_ID=$3
 
 # activate cluster
