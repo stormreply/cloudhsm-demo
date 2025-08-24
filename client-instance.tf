@@ -8,7 +8,7 @@ module "cloudhsm_client" {
   policies         = [aws_iam_policy.client.arn]
   root_volume_size = 50
   vpc_security_group_ids = [
-    aws_security_group.client.name,
+    aws_security_group.client.id,
   ]
 }
 
