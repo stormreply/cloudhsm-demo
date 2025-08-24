@@ -20,7 +20,8 @@ data "aws_iam_policy_document" "client" {
       "*"
     ]
     resources = [
-      "arn:aws:cloudhsm:${local.region}:${local.account_id}:cluster/${aws_cloudhsm_v2_cluster.cluster.cluster_id}"
+      "*"
+      # "arn:aws:cloudhsm:${local.region}:${local.account_id}:cluster/${aws_cloudhsm_v2_cluster.cluster.cluster_id}"
     ]
   }
   statement {

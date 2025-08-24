@@ -29,4 +29,7 @@ resource "aws_security_group" "client" {
     cidr_blocks      = ["0.0.0.0/0"]
     ipv6_cidr_blocks = ["::/0"]
   }
+  tags = {
+    Name = "${var.deployment.name}-client"
+  }
 }
