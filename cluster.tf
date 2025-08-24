@@ -4,7 +4,7 @@ resource "aws_cloudhsm_v2_cluster" "cluster" {
   subnet_ids = [local.default_subnets["a"], local.default_subnets["b"]]
 
   provisioner "local-exec" {
-    when        = apply
+    when        = create
     interpreter = ["/bin/bash", "-c"]
     on_failure  = continue
     quiet       = false
@@ -12,7 +12,7 @@ resource "aws_cloudhsm_v2_cluster" "cluster" {
   }
 
   provisioner "local-exec" {
-    when        = apply
+    when        = create
     interpreter = ["/bin/bash", "-c"]
     on_failure  = continue
     quiet       = false
