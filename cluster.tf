@@ -4,18 +4,16 @@ resource "aws_cloudhsm_v2_cluster" "cluster" {
   subnet_ids = [local.default_subnets["a"], local.default_subnets["b"]]
 
   provisioner "local-exec" {
-    when        = create
-    interpreter = ["/bin/bash", "-c"]
-    on_failure  = continue
-    quiet       = false
-    command     = "./1-create-certificates.sh ${self.cluster_id}"
+    when       = create
+    on_failure = continue
+    quiet      = false
+    command    = "bash ./1-create-certificates.sh ${self.cluster_id}"
   }
 
   provisioner "local-exec" {
-    when        = create
-    interpreter = ["/bin/bash", "-c"]
-    on_failure  = continue
-    quiet       = false
-    command     = "./2-initialize-cluster.sh ${self.cluster_id}"
+    when       = create
+    on_failure = continue
+    quiet      = false
+    command    = "bash ./2-initialize-cluster.sh ${self.cluster_id}"
   }
 }
