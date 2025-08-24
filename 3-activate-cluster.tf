@@ -13,4 +13,5 @@ resource "null_resource" "activate_cluster" {
       PASSWORD_ID = random_string.admin_password.id
     }
   }
+  depends_on = [null_resource.initialize_cluster]
 }
