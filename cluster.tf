@@ -2,10 +2,20 @@ resource "aws_cloudhsm_v2_cluster" "cluster" {
   hsm_type   = "hsm2m.medium" # only option atm, do not change
   mode       = "NON_FIPS"
   subnet_ids = [local.default_subnets["a"], local.default_subnets["b"]]
-}
 
-# data "aws_cloudhsm_v2_cluster" "cluster" {
-#   # by using the data source, both cluster and hsm can start deploying at the same time
-#   cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
-#   depends_on = [aws_cloudhsm_v2_hsm.hsm_one]
-# }
+  provisioner "local-exec" {
+    when        = apply
+    interpreter = ["/bin/bash", "-c"]
+    on_failure  = continue
+    quiet       = false
+    command     = "./1-create-certificates.sh ${self.cluster_id}"
+  }
+
+  provisioner "local-exec" {
+    when        = apply
+    interpreter = ["/bin/bash", "-c"]
+    on_failure  = continue
+    quiet       = false
+    command     = "./2-initialize-cluster.sh ${self.cluster_id}"
+  }
+}
