@@ -32,4 +32,8 @@ resource "aws_security_group" "client" {
   tags = {
     Name = "${var.deployment.name}-client"
   }
+  lifecycle {
+    create_before_destroy = true
+  }
+
 }
