@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# get CloudHSM CLI for Ubuntu 24.04
-curl -O https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Noble/cloudhsm-cli_latest_u24.04_amd64.deb
-apt install ./cloudhsm-cli_latest_u24.04_amd64.deb
+# get CloudHSM CLI for Amazon Linux 2023, cf. https://docs.aws.amazon.com/cloudhsm/latest/userguide/w20aac23c15c13b7.html
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Amzn2023/cloudhsm-cli-latest.amzn2023.x86_64.rpm
+sudo yum install ./cloudhsm-cli-latest.amzn2023.x86_64.rpm
 
 CLUSTER_ID=$1 IP_ADDRESS=$2 PASSWORD_ID=$3
 
