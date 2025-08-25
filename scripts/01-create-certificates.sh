@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "BEGIN -- 02-create-certificates.sh"
+echo "BEGIN -- 01-create-certificates.sh"
 
 touch ClusterCsr.csr
 
@@ -40,4 +40,4 @@ openssl x509 \
     -CAcreateserial \
     -out CustomerHsmCertificate.crt
 
-echo "END ---- 02-create-certificates.sh"
+echo "END ---- 01-create-certificates.sh"
