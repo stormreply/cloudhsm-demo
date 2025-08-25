@@ -12,7 +12,7 @@ module "cloudhsm_client" {
     "cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id}-sg"
   ]
   depends_on = [
-    aws_cloudhsm_v2_cluster.cluster,
+    null_resource.cluster_init,
     aws_cloudhsm_v2_hsm.hsm_one,
     aws_cloudhsm_v2_hsm.hsm_two,
     random_string.password["admin"],
