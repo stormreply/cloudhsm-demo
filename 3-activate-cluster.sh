@@ -4,6 +4,11 @@
 wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Noble/cloudhsm-cli_latest_u24.04_amd64.deb
 sudo apt install -y ./cloudhsm-cli_latest_u24.04_amd64.deb
 
+ls -la /opt/cloudhsm/
+ls -la /opt/cloudhsm/etc
+ls -la /opt/cloudhsm/etc/cloudhsm-cli.cfg
+cat /opt/cloudhsm/etc/cloudhsm-cli.cfg
+
 CLUSTER_ID=$1
 IP_ADDRESS=$2
 PASSWORD_ID=$3
@@ -17,9 +22,8 @@ cat << EOF
 EOF
 
 # activate cluster
-/opt/cloudhsm/bin/configure-cli -a $IP_ADDRESS
-sleep 5
-/opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "$PASSWORD_ID"
+sudo /opt/cloudhsm/bin/configure-cli -a $IP_ADDRESS
+sudo /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "$PASSWORD_ID"
 
 ls -la /opt/cloudhsm/
 ls -la /opt/cloudhsm/etc
