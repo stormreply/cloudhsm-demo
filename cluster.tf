@@ -9,7 +9,7 @@ resource "aws_cloudhsm_v2_cluster" "cluster" {
     quiet      = false
     command    = "bash ./scripts/01-create-certificates.sh $CLUSTER_ID"
     environment = {
-      CLUSTER_ID = aws_cloudhsm_v2_cluster.cluster.cluster_id
+      CLUSTER_ID = self.cluster_id
     }
   }
 
@@ -19,7 +19,7 @@ resource "aws_cloudhsm_v2_cluster" "cluster" {
     quiet      = false
     command    = "bash ./scripts/02-initialize-cluster.sh $CLUSTER_ID"
     environment = {
-      CLUSTER_ID = aws_cloudhsm_v2_cluster.cluster.cluster_id
+      CLUSTER_ID = self.cluster_id
     }
   }
 
