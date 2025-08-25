@@ -25,10 +25,10 @@ openssl req \
     -out customerCA.crt
 
 # copy customerCA.crt to config location
-# cp customerCA.crt /opt/cloudhsm/etc/customerCA.crt
+cp customerCA.crt /opt/cloudhsm/etc/customerCA.crt
 
 # copy customerCA.crt to /home/ec2-user for later download
-# cp customerCA.crt /home/ec2-user/customerCA.crt
+cp customerCA.crt /home/ec2-user/customerCA.crt
 
 # create CustomerHsmCertificate
 openssl x509 \

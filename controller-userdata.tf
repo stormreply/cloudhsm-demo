@@ -35,4 +35,13 @@ data "cloudinit_config" "controller" {
       password   = random_string.admin_password.id
     })
   }
+
+  part {
+    filename     = "05-create-kmsuser.sh"
+    content_type = "text/x-shellscript"
+    content = templatefile("${path.module}/userdata/05-create-kmsuser.sh", {
+      admin_password   = random_string.admin_password.id
+      kmsuser_password = random_string.kmsuser_password.id
+    })
+  }
 }

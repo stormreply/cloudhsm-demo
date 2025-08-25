@@ -1,20 +1,11 @@
 #!/bin/bash -x
 
-cat << EOF
-{
-  "ClusterId": "${cluster_id}",
-  "HsmIp": "${ip_address}",
-  "HsmPassword": "${password}"
-}
-EOF
+echo "BEGIN -- 04-activate-cluster.sh"
 
 # activate cluster
 sudo /opt/cloudhsm/bin/configure-cli -a ${ip_address}
 sudo /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "${password}"
 
-ls -la /opt/cloudhsm/
-ls -la /opt/cloudhsm/etc
-ls -la /opt/cloudhsm/etc/cloudhsm-cli.cfg
 cat /opt/cloudhsm/etc/cloudhsm-cli.cfg
 
 echo "activating - can take up to 4mins"
@@ -28,3 +19,5 @@ while [ "$CLUSTER_STATE" != "ACTIVE" ] ; do
     )
     echo current status: $CLUSTER_STATE
 done
+
+echo "END ---- 04-activate-cluster.sh"

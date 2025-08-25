@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "BEGIN -- 04-initialize-cluster.sh"
+echo "BEGIN -- 03-initialize-cluster.sh"
 
 # initialize cluster
 aws cloudhsmv2 initialize-cluster \
@@ -19,4 +19,4 @@ while [ "$CLUSTER_STATE" != "INITIALIZED" ] ; do
     )
 done
 
-echo "END ---- 04-initialize-cluster.sh"
+echo "END ---- 03-initialize-cluster.sh"

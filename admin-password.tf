@@ -6,11 +6,6 @@ resource "random_string" "admin_password" {
   override_special = "!@#$%&*()-_=+[]{}<>?" # no ":"
 }
 
-resource "random_string" "suffix" {
-  length  = 5
-  special = false
-}
-
 # trivy:ignore:AVD-AWS-0098 (LOW): Secret explicitly uses the default key.
 resource "aws_secretsmanager_secret" "admin_password" {
   # checkov:skip=CKV_AWS_149: "Encrypt by default AWS kms key"
