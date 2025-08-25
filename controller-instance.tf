@@ -10,7 +10,11 @@ module "cloudhsm_client" {
   vpc_security_group_ids = [
     aws_security_group.client.id,
   ]
-  # depends_on = [data.cloudinit_config.controller]
+  depends_on = [
+    aws_cloudhsm_v2_cluster.cluster,
+    aws_cloudhsm_v2_hsm.hsm_one,
+    random_string.admin_password
+  ]
 }
 
 # TODO: what about sg cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id?
