@@ -8,9 +8,17 @@ CLUSTER_ID=$1
 IP_ADDRESS=$2
 PASSWORD_ID=$3
 
+cat << EOF
+{
+  "ClusterId": "$CLUSTER_ID",
+  "HsmIp": "$IP_ADDRESS",
+  "HsmPassword": "$PASSWORD_ID"
+}
+EOF
+
 # activate cluster
 /opt/cloudhsm/bin/configure-cli -a $IP_ADDRESS
-sleep 1
+sleep 5
 /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "$PASSWORD_ID"
 
 ls -la /opt/cloudhsm/
