@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CLUSTER_ID=$1
+echo "BEGIN -- 02-create-certificates.sh"
 
 touch ClusterCsr.csr
 
@@ -8,7 +8,7 @@ touch ClusterCsr.csr
 while [ $(cat ClusterCsr.csr | wc -c) -eq 0 ] ; do
     sleep 1
     aws cloudhsmv2 describe-clusters \
-    --filters clusterIds=$CLUSTER_ID \
+    --filters clusterIds=${cluster_id} \
     --query 'Clusters[].Certificates.ClusterCsr' \
     --output text \
     > ClusterCsr.csr
@@ -39,3 +39,5 @@ openssl x509 \
     -CAkey customerCA.key \
     -CAcreateserial \
     -out CustomerHsmCertificate.crt
+
+echo "END ---- 02-create-certificates.sh"
