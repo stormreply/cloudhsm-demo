@@ -1,13 +1,16 @@
-#!/bin/bash
+#!/bin/bash -x
 
 # get CloudHSM CLI for Github Runners on Ubuntu 24.04 TLS, cf. https://docs.aws.amazon.com/cloudhsm/latest/userguide/w20aac23c15c13b7.html
 wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Noble/cloudhsm-cli_latest_u24.04_amd64.deb
 sudo apt install -y ./cloudhsm-cli_latest_u24.04_amd64.deb
 
-CLUSTER_ID=$1 IP_ADDRESS=$2 PASSWORD_ID=$3
+CLUSTER_ID=$1
+IP_ADDRESS=$2
+PASSWORD_ID=$3
 
 # activate cluster
 /opt/cloudhsm/bin/configure-cli -a $IP_ADDRESS
+sleep 1
 /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "$PASSWORD_ID"
 
 ls -la /opt/cloudhsm/
