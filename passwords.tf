@@ -26,10 +26,10 @@ resource "aws_secretsmanager_secret_version" "password" {
   secret_string = random_string.password[each.key].result
 }
 
-output "admin_pw" {
+output "admin_password" {
   value = random_string.password["admin"].result
 }
 
-output "kmsuser_pw" {
+output "kmsuser_password" {
   value = random_string.password["kmsuser"].result
 }

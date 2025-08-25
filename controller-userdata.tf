@@ -32,7 +32,7 @@ data "cloudinit_config" "controller" {
     content = templatefile("${path.module}/userdata/04-activate-cluster.sh", {
       cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
       ip_address = aws_cloudhsm_v2_hsm.hsm_one.ip_address
-      password   = random_string.admin_password.id
+      password   = random_string.password["admin"].id
     })
   }
 
@@ -40,8 +40,8 @@ data "cloudinit_config" "controller" {
     filename     = "05-create-kmsuser.sh"
     content_type = "text/x-shellscript"
     content = templatefile("${path.module}/userdata/05-create-kmsuser.sh", {
-      admin_password   = random_string.admin_password.id
-      kmsuser_password = random_string.kmsuser_password.id
+      admin_password   = random_string.password["admin"].id
+      kmsuser_password = random_string.password["kmsuser"].id
     })
   }
 }
