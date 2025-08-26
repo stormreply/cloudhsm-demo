@@ -4,40 +4,27 @@ data "cloudinit_config" "controller" {
   gzip          = false
   base64_encode = false
 
-  # part {
-  #   filename     = "01-create-certificates.sh"
-  #   content_type = "text/x-shellscript"
-  #   content = templatefile("${path.module}/scripts/01-create-certificates.sh", {
-  #     cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
-  #   })
-  # }
+  part {
+    filename     = "01-create-certificates.sh"
+    content_type = "text/x-shellscript"
+    content = templatefile("${path.module}/scripts/01-create-certificates.sh", {
+      cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
+    })
+  }
 
-  # part {
-  #   filename     = "02-initialize-cluster.sh"
-  #   content_type = "text/x-shellscript"
-  #   content = templatefile("${path.module}/scripts/02-initialize-cluster.sh", {
-  #     cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
-  #   })
-  # }
+  part {
+    filename     = "02-initialize-cluster.sh"
+    content_type = "text/x-shellscript"
+    content = templatefile("${path.module}/scripts/02-initialize-cluster.sh", {
+      cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
+    })
+  }
 
   part {
     filename     = "03-install-cloudhsm-cli.sh"
     content_type = "text/x-shellscript"
     content      = file("${path.module}/scripts/03-install-cloudhsm-cli.sh")
   }
-
-  # part {
-  #   filename     = "customerCA.crt"
-  #   content_type = "text/cloud-config"
-  #   content      = <<-EOT
-  #     write_files:
-  #       - path: /opt/cloudhsm/etc/customerCA.crt
-  #         permissions: '0644'
-  #         owner: root:root
-  #         content: |
-  #           ${indent(12, data.local_file.customer_ca_crt.content)}
-  #   EOT
-  # }
 
   part {
     filename     = "04-activate-cluster.sh"

@@ -12,7 +12,6 @@ module "controller" {
     "cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id}-sg"
   ]
   depends_on = [
-    null_resource.cluster_init,
     aws_cloudhsm_v2_hsm.hsm_one,
     random_string.password["admin"],
     random_string.password["kmsuser"]
