@@ -35,7 +35,7 @@ data "cloudinit_config" "controller" {
           permissions: '0644'
           owner: root:root
           content: |
-            ${indent(12, file("customerCA.crt"))}
+            ${indent(12, file("/tmp/customerCA.crt"))}
     EOT
   }
 
