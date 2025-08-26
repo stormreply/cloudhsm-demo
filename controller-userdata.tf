@@ -2,7 +2,7 @@ data "cloudinit_config" "controller" {
 
   # see https://discuss.hashicorp.com/t/terraform-template-cloudinit-config-multiple-part-execution-order-is-wrong/16962/3
   gzip          = false
-  base64_encode = true
+  base64_encode = false
 
   part {
     filename     = "01-create-certificates.sh"

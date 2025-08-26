@@ -6,7 +6,7 @@ module "controller" {
   deployment       = var.deployment
   policies         = [aws_iam_policy.client.arn]
   root_volume_size = 50
-  user_data_base64 = data.cloudinit_config.controller.rendered
+  user_data_base64 = base64encode(trimspace(data.cloudinit_config.example.rendered))
   vpc_security_group_ids = [
     aws_security_group.client.id,
     "cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id}-sg"
