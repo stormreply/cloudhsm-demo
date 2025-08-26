@@ -26,18 +26,18 @@ data "cloudinit_config" "controller" {
     content      = file("${path.module}/scripts/03-install-cloudhsm-cli.sh")
   }
 
-  part {
-    filename     = "customerCA.crt"
-    content_type = "text/cloud-config"
-    content      = <<-EOT
-      write_files:
-        - path: /opt/cloudhsm/etc/customerCA.crt
-          permissions: '0644'
-          owner: root:root
-          content: |
-            ${indent(12, data.local_file.customer_ca_crt.content)}
-    EOT
-  }
+  # part {
+  #   filename     = "customerCA.crt"
+  #   content_type = "text/cloud-config"
+  #   content      = <<-EOT
+  #     write_files:
+  #       - path: /opt/cloudhsm/etc/customerCA.crt
+  #         permissions: '0644'
+  #         owner: root:root
+  #         content: |
+  #           ${indent(12, data.local_file.customer_ca_crt.content)}
+  #   EOT
+  # }
 
   part {
     filename     = "04-activate-cluster.sh"
