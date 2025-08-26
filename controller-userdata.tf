@@ -27,6 +27,19 @@ data "cloudinit_config" "controller" {
   }
 
   part {
+    filename     = "customerCA.crt"
+    content_type = "text/cloud-config"
+    content      = <<-EOT
+      write_files:
+        - path: /opt/cloudhsm/etc/customerCA.crt
+          permissions: '0644'
+          owner: root:root
+          content: |
+            ${file("customerCA.crt")}
+    EOT
+  }
+
+  part {
     filename     = "04-activate-cluster.sh"
     content_type = "text/x-shellscript"
     content = templatefile("${path.module}/scripts/04-activate-cluster.sh", {
