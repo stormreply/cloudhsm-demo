@@ -19,3 +19,7 @@ module "controller" {
 }
 
 # TODO: what about sg cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id?
+
+output "userdata" {
+  value = data.cloudinit_config.controller.rendered
+}

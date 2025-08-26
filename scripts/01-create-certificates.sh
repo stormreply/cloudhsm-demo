@@ -2,7 +2,7 @@
 
 echo "BEGIN -- 01-create-certificates.sh"
 
-cluster_id=$1
+# cluster_id=$1
 
 touch ClusterCsr.csr
 

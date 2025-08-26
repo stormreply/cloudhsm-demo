@@ -2,7 +2,7 @@
 
 echo "BEGIN -- 02-initialize-cluster.sh"
 
-cluster_id=$1
+# cluster_id=$1
 
 # initialize cluster
 aws cloudhsmv2 initialize-cluster \
