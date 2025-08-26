@@ -14,7 +14,6 @@ resource "null_resource" "cluster_active" {
   }
 
   depends_on = [
-    aws_cloudhsm_v2_cluster.cluster,
-    module.controller
+    aws_cloudhsm_v2_cluster.cluster
   ]
 }
