@@ -42,4 +42,6 @@ openssl x509 \
     -CAcreateserial \
     -out CustomerHsmCertificate.crt
 
+cp customerCA.crt /tmp
+
 echo "END ---- 01-create-certificates.sh"
