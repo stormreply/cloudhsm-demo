@@ -1,20 +1,20 @@
-# resource "null_resource" "cluster_active" {
+resource "null_resource" "cluster_active_2" {
 
-#   triggers = {
-#     name = var.deployment.name
-#   }
+  triggers = {
+    name = var.deployment.name
+  }
 
-#   provisioner "local-exec" {
-#     when    = create
-#     quiet   = false
-#     command = "bash ./scripts/07-copy-customer-ca-crt.sh $instance_id"
-#     environment = {
-#       instance_id = module.controller.
-#     }
-#   }
+  provisioner "local-exec" {
+    when    = create
+    quiet   = false
+    command = "bash ./scripts/07-copy-customer-ca-crt.sh $instance_id"
+    environment = {
+      instance_id = module.controller.instance.id
+    }
+  }
 
-#   depends_on = [
-#     null_resource.cluster_active,
-#     module.controller
-#   ]
-# }
+  depends_on = [
+    null_resource.cluster_active,
+    module.controller
+  ]
+}
