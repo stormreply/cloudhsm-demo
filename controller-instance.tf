@@ -1,4 +1,4 @@
-module "cloudhsm_client" {
+module "controller" {
   # checkov:skip=CKV_TF_1: "Ensure Terraform module sources use a commit hash"
   # checkov:skip=CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
   # tflint-ignore: terraform_module_pinned_source

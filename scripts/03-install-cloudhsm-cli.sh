@@ -6,9 +6,6 @@ echo "BEGIN -- 03-install-cloudhsm-cli.sh"
 wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/Amzn2023/cloudhsm-cli-latest.amzn2023.x86_64.rpm
 sudo yum install -y ./cloudhsm-cli-latest.amzn2023.x86_64.rpm
 
-ls -la /opt/cloudhsm/
-ls -la /opt/cloudhsm/etc
-ls -la /opt/cloudhsm/etc/cloudhsm-cli.cfg
 cat /opt/cloudhsm/etc/cloudhsm-cli.cfg
 
 echo "END ---- 03-install-cloudhsm-cli.sh"
