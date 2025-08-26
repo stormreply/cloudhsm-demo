@@ -6,19 +6,9 @@ module "controller" {
   deployment       = var.deployment
   policies         = [aws_iam_policy.client.arn]
   root_volume_size = 50
-  user_data        = data.cloudinit_config.controller.rendered
+  user_data_base64 = data.cloudinit_config.controller.rendered
   vpc_security_group_ids = [
     aws_security_group.client.id,
     "cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id}-sg"
   ]
-  # depends_on = [
-  #   aws_cloudhsm_v2_cluster.cluster,
-  #   aws_cloudhsm_v2_hsm.hsm_one,
-  #   random_string.password["admin"],
-  #   random_string.password["kmsuser"]
-  # ]
-}
-
-output "userdata" {
-  value = data.cloudinit_config.controller.rendered
 }
