@@ -1,0 +1,5 @@
+# NOTE:
+# this file will be overwritten with the certificate
+# null_resource.cluster_ca_cert has downloaded from
+# the controller instance, and be read by the
+# customer_ca_crt data source thereafter
