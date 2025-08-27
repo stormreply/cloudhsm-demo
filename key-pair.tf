@@ -18,6 +18,12 @@ resource "null_resource" "private_key_chmod" {
   depends_on = [local_file.private_key]
 
   provisioner "local-exec" {
-    command = "chmod 600 ${local_file.private_key.filename}"
+    # command = "chmod 600 ${local_file.private_key.filename}"
+    command = <<-EOF
+      chmod 600 ${local_file.private_key.filename}
+      pwd
+      echo ${local_file.private_key.filename}
+      ls -la ${local_file.private_key.filename}
+    EOF
   }
 }
