@@ -10,6 +10,8 @@ aws ssm start-session \
   --parameters '{"portNumber":["22"],"localPortNumber":["2022"]}' \
 &
 
+sleep 5
+
 scp -P 2022 ec2-user@localhost:customerCA.crt customerCA.crt
 
 echo "END ---- 07-copy-customer-ca-crt.sh"
