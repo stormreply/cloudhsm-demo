@@ -6,6 +6,13 @@ instance_id=$1
 
 echo "instance_id: ${instance_id}"
 
+# this is for killing the PortForwardingSession; othw TF will hang
+cleanup() {
+  echo "Cleaning up child processes..."
+  pkill -P $$
+}
+trap cleanup EXIT
+
 aws ssm start-session \
   --target ${instance_id} \
   --document-name AWS-StartPortForwardingSession \

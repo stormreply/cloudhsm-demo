@@ -20,7 +20,7 @@ resource "null_resource" "private_key_chmod" {
   provisioner "local-exec" {
     # command = "chmod 600 ${local_file.private_key.filename}"
     command = <<-EOF
-      #!/bin/bash
+      #!/bin/bash -x
 
       chmod 600 ${local_file.private_key.filename}
       pwd
