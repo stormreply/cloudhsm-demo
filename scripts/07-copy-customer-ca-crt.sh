@@ -12,6 +12,6 @@ aws ssm start-session \
 
 sleep 5
 
-scp -P 2022 -o StrictHostKeyChecking=no ec2-user@localhost:customerCA.crt customerCA.crt
+scp -i controller.pem -o StrictHostKeyChecking=no -P 2022 ec2-user@localhost:customerCA.crt customerCA.crt
 
 echo "END ---- 07-copy-customer-ca-crt.sh"

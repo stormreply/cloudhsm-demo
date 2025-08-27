@@ -4,6 +4,7 @@ module "controller" {
   # tflint-ignore: terraform_module_pinned_source
   source           = "git::https://github.com/stormreply/terraform-build-controller.git"
   deployment       = var.deployment
+  key_name         = aws_key_pair.controller.key_name
   policies         = [aws_iam_policy.client.arn]
   root_volume_size = 50
   user_data_base64 = base64encode(trimspace(data.cloudinit_config.controller.rendered))
