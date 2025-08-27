@@ -1,4 +1,4 @@
-resource "null_resource" "cluster_active" {
+resource "null_resource" "poll_cluster_state" {
 
   triggers = {
     name = var.deployment.name
@@ -7,9 +7,14 @@ resource "null_resource" "cluster_active" {
   provisioner "local-exec" {
     when    = create
     quiet   = false
-    command = "bash ./scripts/06-check-active.sh $cluster_id"
+    command = "bash ./scripts/06-poll-cluster-state.sh $cluster_id"
     environment = {
       cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
     }
   }
+
+  depends_on = [
+    aws_cloudhsm_v2_hsm.hsm_two,
+    null_resource.poll_cluster_state
+  ]
 }
