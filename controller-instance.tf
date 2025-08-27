@@ -9,6 +9,6 @@ module "controller" {
   user_data_base64 = base64encode(trimspace(data.cloudinit_config.controller.rendered))
   vpc_security_group_ids = [
     aws_security_group.client.id,
-    "cloudhsm-${aws_cloudhsm_v2_cluster.cluster.cluster_id}-sg"
+    aws_cloudhsm_v2_cluster.cluster.security_group_id
   ]
 }
