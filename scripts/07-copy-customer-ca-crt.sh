@@ -23,11 +23,14 @@ sleep 5
 
 echo "start SCP"
 
-scp -i controller.pem -o StrictHostKeyChecking=no -P 2022 ec2-user@localhost:customerCA.crt customerCA.crt
+chmod 0600 controller.pem
 
-echo "end SCP"
 pwd
 ls -la controller.pem
 cat controller.pem
+
+scp -i controller.pem -o StrictHostKeyChecking=no -P 2022 ec2-user@localhost:customerCA.crt customerCA.crt
+
+echo "end SCP"
 
 echo "END ---- 07-copy-customer-ca-crt.sh"
