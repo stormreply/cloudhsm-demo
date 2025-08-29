@@ -15,8 +15,11 @@ while [ "$CUSTOM_KEY_STORE_ID" = "" ] ; do
     )
     echo custom key store id: $CUSTOM_KEY_STORE_ID
 done
-echo "connecting - can take up to 20mins"
+
+echo "connecting - can take up to 30mins"
+
 aws kms connect-custom-key-store --custom-key-store-id "${keystore_id}"
+
 while [ "$CONNECTION_STATE" != "CONNECTED" ] ; do
     sleep 10
     CONNECTION_STATE=$(
