@@ -1,5 +1,5 @@
 
-data "aws_iam_policy_document" "client" {
+data "aws_iam_policy_document" "controller" {
   # checkov:skip=CKV2_AWS_40: "Ensure AWS IAM policy does not allow full IAM privileges"
   # checkov:skip=CKV_AWS_49: "Ensure no IAM policies documents allow "*" as a statement's actions"
   # checkov:skip=CKV_AWS_107: "Ensure IAM policies does not allow credentials exposure"
@@ -36,9 +36,9 @@ data "aws_iam_policy_document" "client" {
   }
 }
 
-resource "aws_iam_policy" "client" {
-  name        = "${var.deployment.name}-client"
+resource "aws_iam_policy" "controller" {
+  name        = "${var.deployment.name}-controller"
   path        = "/"
-  description = "Policy for the ${var.deployment.name} client"
-  policy      = data.aws_iam_policy_document.client.json
+  description = "Policy for the ${var.deployment.name} controller"
+  policy      = data.aws_iam_policy_document.controller.json
 }

@@ -5,11 +5,11 @@ module "controller" {
   source           = "git::https://github.com/stormreply/terraform-build-controller.git"
   deployment       = var.deployment
   key_name         = aws_key_pair.controller.key_name
-  policies         = [aws_iam_policy.client.arn]
+  policies         = [aws_iam_policy.controller.arn]
   root_volume_size = 50
   user_data_base64 = base64encode(trimspace(data.cloudinit_config.controller.rendered))
   vpc_security_group_ids = [
-    aws_security_group.client.id,
+    aws_security_group.controller.id,
     aws_cloudhsm_v2_cluster.cluster.security_group_id
   ]
 }
