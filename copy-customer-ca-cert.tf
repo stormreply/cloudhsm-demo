@@ -1,6 +1,6 @@
 resource "null_resource" "copy_customer_ca_cert" {
   triggers = {
-    name = var.deployment.name
+    name = local._deployment
   }
   provisioner "local-exec" {
     when    = create

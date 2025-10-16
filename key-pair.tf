@@ -4,7 +4,7 @@ resource "tls_private_key" "controller" {
 }
 
 resource "aws_key_pair" "controller" {
-  key_name   = var.deployment.name
+  key_name   = local._deployment
   public_key = tls_private_key.controller.public_key_openssh
 }
 

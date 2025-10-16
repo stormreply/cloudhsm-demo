@@ -3,7 +3,7 @@ module "controller" {
   # checkov:skip=CKV_TF_2: "Ensure Terraform module sources use a tag with a version number"
   # tflint-ignore: terraform_module_pinned_source
   source           = "git::https://github.com/stormreply/terraform-build-controller.git"
-  deployment       = var.deployment
+  deployment       = local._deployment
   key_name         = aws_key_pair.controller.key_name
   policies         = [aws_iam_policy.controller.arn]
   root_volume_size = 50

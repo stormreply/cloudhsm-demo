@@ -1,7 +1,7 @@
 resource "null_resource" "poll_cluster_state" {
 
   triggers = {
-    name = var.deployment.name
+    name = local._deployment
   }
 
   provisioner "local-exec" {

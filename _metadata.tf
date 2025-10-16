@@ -1,29 +1,34 @@
 locals {
-  module_name = basename(abspath(path.module))
-  deployment = merge(
-    var.deployment,
-    var.deployment.name == "" ? { name = local.module_name } : {},
-    var.deployment.short_name == "" ? { short_name = local.module_name } : {}
+  _metadata = merge(
+    var._metadata,
+    var._metadata.deployment == "" ? { deployment = basename(abspath(path.module)) } : {},
+    var._metadata.short_name == "" ? { short_name = basename(abspath(path.module)) } : {}
   )
 }
 
-variable "deployment" {
+locals {
+  _deployment = local._metadata.deployment
+}
+
+variable "_metadata" {
   type = object({
     actor       = string # Github actor (deployer) of the deployment
-    environment = string # environment of the deployment
-    name        = string # name of the deployment
+    catalog_id  = string # SLT catalog id of this module
+    environment = string # environment of the deployment, defaults to <actor>
+    deployment  = string # slt-<catalod_id>-<repo>-<environment>
     ref         = string # Git reference of the deployment
     ref_name    = string # Git ref_name (branch) of the deployment
     repo        = string # GitHub short repository name (without owner) of the deployment
     repository  = string # GitHub full repository name (including owner) of the deployment
     sha         = string # Git (full-length, 40 char) commit SHA of the deployment
-    short_name  = string # Short name of the deployment
+    short_name  = string # slt-<cat>-<environment>
     time        = string # Timestamp of the deployment
   })
   default = {
     actor       = ""
+    catalog_id  = ""
     environment = ""
-    name        = ""
+    deployment  = ""
     ref         = ""
     ref_name    = ""
     repo        = ""
@@ -34,6 +39,11 @@ variable "deployment" {
   }
 }
 
-output "deployment" {
-  value = var.deployment
+output "_deployment" {
+  value = local._deployment
+
+}
+
+output "_metadata" {
+  value = var._metadata
 }
