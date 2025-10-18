@@ -7,7 +7,7 @@ resource "aws_kms_custom_key_store" "cloudhsm" {
   provisioner "local-exec" {
     when    = create
     quiet   = false
-    command = "bash ./scripts/wait-keystore-connected.sh $keystore_id"
+    command = "bash ./local-exec/wait-keystore-connected.sh $keystore_id"
     environment = {
       keystore_id = self.id
     }
