@@ -1,7 +1,7 @@
 resource "null_resource" "poll_cluster_state" {
 
   triggers = {
-    name = local._deployment
+    always_run = "${timestamp()}"
   }
 
   provisioner "local-exec" {
@@ -12,6 +12,4 @@ resource "null_resource" "poll_cluster_state" {
       cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
     }
   }
-
-  depends_on = [aws_cloudhsm_v2_hsm.hsm_one]
 }
