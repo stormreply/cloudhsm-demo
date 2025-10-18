@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-echo "BEGIN -- 05-create-kmsuser.sh"
+echo "BEGIN -- $(basename $0)"
 
 # create kmsuser
 export CLOUDHSM_ROLE=admin
@@ -10,6 +10,5 @@ export CLOUDHSM_PIN="admin:${admin_password}"
   --username kmsuser \
   --role crypto-user \
   --password "${kmsuser_password}"
-EOF
 
-echo "END ---- 05-create-kmsuser.sh"
+echo "END ---- $(basename $0)"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "BEGIN -- 02-initialize-cluster.sh"
+echo "BEGIN -- $(basename $0)"
 
 # cluster_id=$1
 
@@ -21,4 +21,4 @@ while [ "$CLUSTER_STATE" != "INITIALIZED" ] ; do
     )
 done
 
-echo "END ---- 02-initialize-cluster.sh"
+echo "END ---- $(basename $0)"

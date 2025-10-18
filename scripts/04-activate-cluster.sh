@@ -1,6 +1,6 @@
 #!/bin/bash -x
 
-echo "BEGIN -- 04-activate-cluster.sh"
+echo "BEGIN -- $(basename $0)"
 
 # copy customerCA.crt to config location for configure- and cloudhsm-cli
 cp customerCA.crt /opt/cloudhsm/etc/customerCA.crt
@@ -14,4 +14,4 @@ sudo /opt/cloudhsm/bin/cloudhsm-cli cluster activate --password "${password}"
 
 cat /opt/cloudhsm/etc/cloudhsm-cli.cfg
 
-echo "END ---- 04-activate-cluster.sh"
+echo "END ---- $(basename $0)"
