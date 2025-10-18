@@ -5,7 +5,7 @@ echo "BEGIN -- 06-check-active.sh"
 cluster_id=$1
 
 while [ "$CLUSTER_STATE" != "ACTIVE" ] ; do
-    sleep 5
+    sleep 10
     CLUSTER_STATE=$(
     aws cloudhsmv2 describe-clusters \
         --filters clusterIds=${cluster_id} \

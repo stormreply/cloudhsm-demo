@@ -16,7 +16,7 @@ SSM_PID=$!
 
 sleep 5
 chmod 0600 controller.pem
-scp -i controller.pem -o StrictHostKeyChecking=no -P 2022 ec2-user@localhost:customerCA.crt customerCA.crt
+scp -i controller.pem -o StrictHostKeyChecking=no -P 2022 ec2-user@localhost:customer-ca.crt customer-ca.crt
 kill $SSM_PID
 wait $SSM_PID || true
 

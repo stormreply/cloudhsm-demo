@@ -16,23 +16,23 @@ while [ $(cat ClusterCsr.csr | wc -c) -eq 0 ] ; do
     > ClusterCsr.csr
 done
 
-# create customerCA
+# create customer-ca
 openssl req \
     -x509 \
     -nodes \
     -days 3652 \
     -newkey rsa:4096 \
     -subj "/O=ACME Examples, Inc/CN=example.com" \
-    -keyout customerCA.key \
-    -out customerCA.crt
+    -keyout customer-ca.key \
+    -out customer-ca.crt
 
 # create CustomerHsmCertificate
 openssl x509 \
     -req \
     -days 3652 \
     -in ClusterCsr.csr \
-    -CA customerCA.crt \
-    -CAkey customerCA.key \
+    -CA customer-ca.crt \
+    -CAkey customer-ca.key \
     -CAcreateserial \
     -out CustomerHsmCertificate.crt
 
