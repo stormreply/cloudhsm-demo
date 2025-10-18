@@ -2,11 +2,11 @@
 
 echo "BEGIN -- 04-activate-cluster.sh"
 
-# copy customer-ca.crt to config location for configure- and cloudhsm-cli
-cp customer-ca.crt /opt/cloudhsm/etc/customer-ca.crt
+# copy customerCA.crt to config location for configure- and cloudhsm-cli
+cp customerCA.crt /opt/cloudhsm/etc/customerCA.crt
 
-# copy customer-ca.crt to /home/ec2-user for later download
-cp customer-ca.crt /home/ec2-user/customer-ca.crt
+# copy customerCA.crt to /home/ec2-user for later download
+cp customerCA.crt /home/ec2-user/customerCA.crt
 
 # activate cluster
 sudo /opt/cloudhsm/bin/configure-cli -a ${ip_address}

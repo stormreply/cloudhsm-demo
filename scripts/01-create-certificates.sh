@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "BEGIN -- 01-create-certificates.sh"
+echo "BEGIN -- $(basename $0)"
 
 # cluster_id=$1
 
@@ -16,24 +16,24 @@ while [ $(cat ClusterCsr.csr | wc -c) -eq 0 ] ; do
     > ClusterCsr.csr
 done
 
-# create customer-ca
+# create customerCA
 openssl req \
     -x509 \
     -nodes \
     -days 3652 \
     -newkey rsa:4096 \
     -subj "/O=ACME Examples, Inc/CN=example.com" \
-    -keyout customer-ca.key \
-    -out customer-ca.crt
+    -keyout customerCA.key \
+    -out customerCA.crt
 
 # create CustomerHsmCertificate
 openssl x509 \
     -req \
     -days 3652 \
     -in ClusterCsr.csr \
-    -CA customer-ca.crt \
-    -CAkey customer-ca.key \
+    -CA customerCA.crt \
+    -CAkey customerCA.key \
     -CAcreateserial \
     -out CustomerHsmCertificate.crt
 
-echo "END ---- 01-create-certificates.sh"
+echo "END ---- $(basename $0)"
