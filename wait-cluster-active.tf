@@ -1,4 +1,4 @@
-resource "null_resource" "poll_cluster_state" {
+resource "null_resource" "wait_cluster_active" {
 
   triggers = {
     always_run = "${timestamp()}"
@@ -7,7 +7,7 @@ resource "null_resource" "poll_cluster_state" {
   provisioner "local-exec" {
     when    = create
     quiet   = false
-    command = "bash ./scripts/06-poll-cluster-state.sh $cluster_id"
+    command = "bash ./local-exec/wait-cluster-active.sh $cluster_id"
     environment = {
       cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
     }
