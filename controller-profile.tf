@@ -37,8 +37,8 @@ data "aws_iam_policy_document" "controller" {
 }
 
 resource "aws_iam_policy" "controller" {
-  name        = "${local._deployment}-controller"
+  name        = "${local._name_tag}-controller"
   path        = "/"
-  description = "Policy for the ${local._deployment} controller"
+  description = "Policy for the ${local._name_tag} controller"
   policy      = data.aws_iam_policy_document.controller.json
 }

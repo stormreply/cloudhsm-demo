@@ -4,7 +4,7 @@ module "controller" {
   # tflint-ignore: terraform_module_pinned_source
   source           = "git::https://github.com/stormreply/terraform-build-controller.git"
   providers        = { aws = aws.controller }
-  instance_name    = "${local._deployment}-controller"
+  instance_name    = "${local._name_tag}-controller"
   key_name         = aws_key_pair.controller.key_name
   policies         = [aws_iam_policy.controller.arn]
   root_volume_size = 50

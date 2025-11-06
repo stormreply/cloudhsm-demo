@@ -10,7 +10,7 @@ provider "aws" {
     tags = merge(
       local._default_tags,
       {
-        deployment-name = "${local._deployment}-controller"
+        deployment-name = "${local._name_tag}-controller"
       }
     )
   }

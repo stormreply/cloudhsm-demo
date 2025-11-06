@@ -16,7 +16,7 @@ resource "aws_secretsmanager_secret" "password" {
   # checkov:skip=CKV_AWS_149: "Encrypt by default AWS kms key"
   # checkov:skip=CKV2_AWS_57: "Ensure Secrets Manager secrets should have automatic rotation enabled"
   for_each = local.hsm_users
-  name     = "${local._deployment}-${each.key}-password-${random_string.suffix.result}" # needs suffix for re-creation
+  name     = "${local._name_tag}-${each.key}-password-${random_string.suffix.result}" # needs suffix for re-creation
 }
 
 # Creating a AWS secret versions for database cluster admin account

@@ -7,8 +7,8 @@ resource "aws_security_group" "controller" {
   # checkov:skip=CKV_AWS_23: "Ensure every security group and rule has a description"
   # checkov:skip=CKV_AWS_24: "Ensure no security groups allow ingress from 0.0.0.0:0 to port 22"
   # checkov:skip=CKV_AWS_382: "Ensure no security groups allow egress from 0.0.0.0:0 to port -1"
-  name        = "${local._deployment}-controller"
-  description = "Security group for the ${local._deployment} controller"
+  name        = "${local._name_tag}-controller"
+  description = "Security group for the ${local._name_tag} controller"
   ingress {
     from_port        = 22
     to_port          = 22
@@ -30,7 +30,7 @@ resource "aws_security_group" "controller" {
     ipv6_cidr_blocks = ["::/0"]
   }
   tags = {
-    Name = "${local._deployment}-controller"
+    Name = "${local._name_tag}-controller"
   }
   lifecycle {
     create_before_destroy = true
