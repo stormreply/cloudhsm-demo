@@ -20,7 +20,7 @@ while [ "$CLUSTER_STATE" != "ACTIVE" && $slept -lt $((30 * 60))] ; do
 done
 
 if [ "$CLUSTER_STATE" != "ACTIVE" ] ; then
-    echo "cluster $cluster_id did not transition to ACTIVE state. exiting.
+    echo "cluster $cluster_id did not reach ACTIVE state. exiting."
     exit 1
 fi
 
