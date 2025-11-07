@@ -7,7 +7,7 @@ cluster_id=$1
 
 slept=0
 
-while [ "$CLUSTER_STATE" != "ACTIVE" && $slept -lt $((30 * 60))] ; do
+while [ "$CLUSTER_STATE" != "ACTIVE" -a $slept -lt $((30 * 60)) ] ; do
     sleep 10
     CLUSTER_STATE=$(
     aws cloudhsmv2 describe-clusters \
