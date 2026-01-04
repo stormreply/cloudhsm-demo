@@ -1,35 +1,16 @@
 # CloudHSM Demo
 
-A complete demonstration of deploying and configuring AWS CloudHSM cluster with KMS Custom Key Store integration using Terraform.
+An AWS CloudHSM cluster demo with KMS Custom Key Store integration
 
-## Overview
+#### Storm Library for Terraform
 
-This project automates the setup of an AWS CloudHSM cluster with the following features:
-- FIPS-compliant CloudHSM cluster with multiple HSM instances
-- Custom certificate authority for HSM authentication
-- EC2 controller instance for cluster management
-- KMS Custom Key Store integration
-- Automated initialization and activation scripts
+This repository is a member of the SLT | Storm Library for Terraform,
+a collection of Terraform modules for Amazon Web Services. The focus
+of these modules, maintained in separate GitHub™ repositories, is on
+building examples, demos and showcases on AWS. The audience of the
+library is learners and presenters alike - people that want to know
+or show how a certain service, pattern or solution looks like, or "feels".
 
-## Architecture
+[Learn more](https://github.com/stormreply/storm-library-for-terraform)
 
-- **CloudHSM Cluster**: Multi-AZ deployment with `hsm2m.medium` instances
-- **Controller Instance**: EC2 instance with CloudHSM CLI for cluster management
-- **Custom Key Store**: KMS integration for CloudHSM-backed encryption keys
-- **Networking**: Uses default VPC subnets across availability zones
 
-## Prerequisites
-
-- AWS CLI configured with appropriate permissions
-- Terraform >= 1.11.4
-- S3 backend configured for Terraform state
-- CloudHSM service permissions in target AWS account
-
-## Required AWS Permissions
-
-Your AWS credentials need permissions for:
-- CloudHSM cluster creation and management
-- EC2 instance creation and management
-- IAM role and policy creation
-- KMS Custom Key Store operations
-- VPC and networking resources
