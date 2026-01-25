@@ -28,6 +28,60 @@ Below is a list of resources taking particularly long to deploy:
 
 Follow these steps in order to explore this demo:
 
+1. Find and select the _cloudhsm-demo controller_ in the _EC2 > Instances_
+   view in the AWS Console
+1. Click _Connect_ to login into the instance
+1. In the terminal that will open inside the browser, enter
+
+    ```
+    sudo -i
+    /opt/cloudhsm/bin/cloudhsm-cli interactive
+    ```
+
+   in order to login as root in your terminal and start the cloudhsm cli
+   in interactive mode
+1. In interactive mode, use ```help``` to get an overview over available
+   cloudhsm cli commands
+1. Try out ```cluster hsm-info``` to obtain details about the HSMs in your
+   cluster
+1. Login as cloudhsm admin typing
+
+   ```login --username admin --role admin```
+
+   You will be prompted to enter a password. Check the output of the _Apply_
+   workflow, searching for the _admin\_password_ output value. Copy that value
+   (be careful to not copy the surrounding double quotes), paste it into the
+   ```Enter password:``` prompt and press ```Enter ⮐```.
+
+1. Type ```user list``` to see the users on your cluster. Notice the _kmsuser_.
+1. Try to login as the _kmsuser_ typing
+
+   ```login --username kmsuser --role crypto-user```
+
+   Again, you will be prompted to enter a password. Check the output of the
+   _Apply_ workflow, search for the _kmsuser\_password_, copy-paste and enter
+   it. Login will fail. This is not because the password was wrong, but because
+   the _kmsuser_ has been configured in our code as the _crypto user_ for our
+   CloudHSM cluster, and the CloudHSM service will rotate the password as soon
+   as it has connected to KMS as a custom key store.
+   Check
+
+   https://docs.aws.amazon.com/kms/latest/developerguide/keystore-cloudhsm.html
+
+   for more details.
+
+1. Use the ```key list``` command to list all currently defined keys in your
+   CloudHSM. Initially, the list will show zero keys.
+1. Feel free to add customer-managed kms keys to your CloudHSM cluster. Before
+   doing so,
+
+   [!NOTE]
+   understand that you will be generating cost
+
+Reference for CloudHSM CLI commands:
+https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-getting-started-use.html
+https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-reference.html
+
 #### Storm Library for Terraform
 
 This repository is a member of the SLT | Storm Library for Terraform,
