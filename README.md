@@ -72,11 +72,27 @@ Follow these steps in order to explore this demo:
 
 1. Use the ```key list``` command to list all currently defined keys in your
    CloudHSM. Initially, the list will show zero keys.
-1. Feel free to add customer-managed kms keys to your CloudHSM cluster. Before
-   doing so,
+1. Feel free to add customer-managed kms keys to your CloudHSM cluster, but
 
-   [!NOTE]
-   understand that you will be generating cost
+   **Understand that you will be generating costs by doing so.**
+
+   Even if you delete a KMS key immediately after creation, it will still be
+   alive for the time of a
+   [waiting period](https://docs.aws.amazon.com/kms/latest/developerguide/deleting-keys.html#deleting-keys-how-it-works)
+   with a default of 30 days and a minimum of 7 days that you need to set
+   upon deletion. During this period, your key will create costs. However,
+   as you will probably almost never use your key apart from in this demo,
+   it is maybe worth it. Please get yourself informed about standard KMS key
+   charges. Also that, if you have configured customer-managed KMS keys in
+   your CloudHSM,
+
+   **The _Destroy_ workflow won't be able to destroy your custom key store.**
+
+   The keystore itself won't create any additional costs, but keep in mind
+   to delete it manually after the waiting period. All other resources should
+   always be destroyed by means of the _Destroy_ workflow, especially the
+   CloudHSM instances, which are the really expensive parts of this demo.
+   Please make sure that they have been properly destroyed.
 
 Reference for CloudHSM CLI commands:
 https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-getting-started-use.html
