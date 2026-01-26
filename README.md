@@ -82,9 +82,10 @@ Follow these steps in order to explore this demo:
    with a default of 30 days and a minimum of 7 days that you need to set
    upon deletion. During this period, your key will create costs. However,
    as you will probably almost never use your key apart from in this demo,
-   it is maybe worth it. Please get yourself informed about standard KMS key
-   charges. Also that, if you have configured customer-managed KMS keys in
-   your CloudHSM,
+   it is maybe worth it. Please get yourself informed about
+   [standard KMS key charges](https://aws.amazon.com/kms/pricing/?nc1=h_ls).
+   Also note that if you have configured customer-managed KMS keys in your
+   CloudHSM,
 
    **The _Destroy_ workflow won't be able to destroy your custom key store.**
 
@@ -95,8 +96,9 @@ Follow these steps in order to explore this demo:
    Please make sure that they have been properly destroyed.
 
 Reference for CloudHSM CLI commands:
-https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-getting-started-use.html
-https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-reference.html
+
+- https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-getting-started-use.html
+- https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-reference.html
 
 #### Storm Library for Terraform
 
