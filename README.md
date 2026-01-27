@@ -2,10 +2,20 @@
 
 An AWS CloudHSM cluster demo with KMS Custom Key Store integration
 
+#### Storm Library for Terraform
+
+This repository is a member of the SLT | Storm Library for Terraform,
+a collection of Terraform modules for Amazon Web Services. The focus
+of these modules, maintained in separate GitHub™ repositories, is on
+building examples, demos and showcases on AWS. The audience of the
+library is learners and presenters alike - people that want to know
+or show how a certain service, pattern or solution looks like, or "feels".
+
+[Learn more](https://github.com/stormreply/storm-library-for-terraform)
+
 ## Installation
 
-This repository is a member of the **Storm Library for Terraform** and
-can be built using GitHub Actions. It you want to do so, you need to
+This demo can be built using GitHub Actions. In order to do so
 
 - [Install the Storm Library for Terraform](https://github.com/stormreply/storm-library-for-terraform/blob/main/docs/INSTALL-LIBRARY.md)
 - [Deploy this member repository](https://github.com/stormreply/storm-library-for-terraform/blob/main/docs/DEPLOY-MEMBER.md)
@@ -99,14 +109,3 @@ Reference for CloudHSM CLI commands:
 
 - https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-getting-started-use.html
 - https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-reference.html
-
-#### Storm Library for Terraform
-
-This repository is a member of the SLT | Storm Library for Terraform,
-a collection of Terraform modules for Amazon Web Services. The focus
-of these modules, maintained in separate GitHub™ repositories, is on
-building examples, demos and showcases on AWS. The audience of the
-library is learners and presenters alike - people that want to know
-or show how a certain service, pattern or solution looks like, or "feels".
-
-[Learn more](https://github.com/stormreply/storm-library-for-terraform)
