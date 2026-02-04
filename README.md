@@ -109,3 +109,85 @@ Reference for CloudHSM CLI commands:
 
 - https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-getting-started-use.html
 - https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-reference.html
+
+## Terraform Docs
+
+<details>
+<summary>Click to show</summary>
+
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.11.4 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.8.0 |
+| <a name="requirement_local"></a> [local](#requirement\_local) | >= 2.5.3 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | >= 3.2.4 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.7.2 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 4.1.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.8.0 |
+| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | n/a |
+| <a name="provider_local"></a> [local](#provider\_local) | >= 2.5.3 |
+| <a name="provider_null"></a> [null](#provider\_null) | >= 3.2.4 |
+| <a name="provider_random"></a> [random](#provider\_random) | >= 3.7.2 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | >= 4.1.0 |
+
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| <a name="module_controller"></a> [controller](#module\_controller) | git::https://github.com/stormreply/ssm-managed-instance.git | n/a |
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws\_cloudhsm\_v2\_cluster.cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudhsm_v2_cluster) | resource |
+| [aws\_cloudhsm\_v2\_hsm.hsm\_one](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudhsm_v2_hsm) | resource |
+| [aws\_cloudhsm\_v2\_hsm.hsm\_two](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudhsm_v2_hsm) | resource |
+| [aws\_default\_subnet.this](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/default_subnet) | resource |
+| [aws\_iam\_policy.controller](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy) | resource |
+| [aws\_key\_pair.controller](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair) | resource |
+| [aws\_kms\_custom\_key\_store.cloudhsm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_custom_key_store) | resource |
+| [aws\_secretsmanager\_secret.password](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret) | resource |
+| [aws\_secretsmanager\_secret\_version.password](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret_version) | resource |
+| [aws\_security\_group.controller](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
+| [local\_file.private\_key](https://registry.terraform.io/providers/hashicorp/local/latest/docs/resources/file) | resource |
+| [null\_resource.copy\_customer\_ca\_crt](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null\_resource.delete\_cloudhsm\_log\_group](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null\_resource.private\_key\_chmod](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null\_resource.wait\_cluster\_active](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [random\_string.password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [random\_string.suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
+| [tls\_private\_key.controller](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
+| [aws\_availability\_zones.available](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/availability_zones) | data source |
+| [aws\_caller\_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
+| [aws\_iam\_policy\_document.controller](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws\_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
+| [cloudinit\_config.controller](https://registry.terraform.io/providers/hashicorp/cloudinit/latest/docs/data-sources/config) | data source |
+| [local\_file.customer\_ca\_crt](https://registry.terraform.io/providers/hashicorp/local/latest/docs/data-sources/file) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input__metadata"></a> [\_metadata](#input\_\_metadata) | n/a | <pre>object({<br/>    actor      = string # Github actor (deployer) of the deployment<br/>    catalog_id = string # SLT catalog id of this module<br/>    deployment = string # slt-<catalod_id>-<repo>-<actor><br/>    ref        = string # Git reference of the deployment<br/>    ref_name   = string # Git ref_name (branch) of the deployment<br/>    repo       = string # GitHub short repository name (without owner) of the deployment<br/>    repository = string # GitHub full repository name (including owner) of the deployment<br/>    sha        = string # Git (full-length, 40 char) commit SHA of the deployment<br/>    short_name = string # slt-<catalog_id>-<actor><br/>    time       = string # Timestamp of the deployment<br/>  })</pre> | <pre>{<br/>  "actor": "",<br/>  "catalog_id": "",<br/>  "deployment": "",<br/>  "ref": "",<br/>  "ref_name": "",<br/>  "repo": "",<br/>  "repository": "",<br/>  "sha": "",<br/>  "short_name": "",<br/>  "time": ""<br/>}</pre> | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| <a name="output__default_tags"></a> [\_default\_tags](#output\_\_default\_tags) | n/a |
+| <a name="output__metadata"></a> [\_metadata](#output\_\_metadata) | n/a |
+| <a name="output__name_tag"></a> [\_name\_tag](#output\_\_name\_tag) | n/a |
+| <a name="output_admin_password"></a> [admin\_password](#output\_admin\_password) | n/a |
+| <a name="output_kmsuser_password"></a> [kmsuser\_password](#output\_kmsuser\_password) | n/a |
+<!-- END_TF_DOCS -->
+
+</details>
