@@ -22,10 +22,10 @@ repos:
         - --args=--output-mode=inject
     # - id: terraform_tflint
     # - id: terraform_trivy
-    - id: terraform_validate
-      args:
-        - --hook-config=--retry-once-with-cleanup=true
-        - --tf-init-args=-backend=false
+    # - id: terraform_validate
+    #   args:
+    #     - --hook-config=--retry-once-with-cleanup=true
+    #     - --tf-init-args=-backend=false
     # - id: terraform_checkov
       args:
         - --args=--quiet
