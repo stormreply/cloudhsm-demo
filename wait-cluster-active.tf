@@ -1,7 +1,7 @@
 resource "null_resource" "wait_cluster_active" {
 
   triggers = {
-    always_run = "${timestamp()}"
+    always_run = timestamp()
   }
 
   provisioner "local-exec" {

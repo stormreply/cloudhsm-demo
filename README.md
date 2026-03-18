@@ -1,4 +1,4 @@
-# CloudHSM Demo
+# SLT - CloudHSM Demo
 
 An AWS CloudHSM cluster demo with KMS Custom Key Store integration
 
@@ -120,23 +120,24 @@ Reference for CloudHSM CLI commands:
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.11.4 |
-| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6.8.0 |
-| <a name="requirement_local"></a> [local](#requirement\_local) | >= 2.5.3 |
-| <a name="requirement_null"></a> [null](#requirement\_null) | >= 3.2.4 |
-| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.7.2 |
-| <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 4.1.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1 |
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | >= 6 |
+| <a name="requirement_cloudinit"></a> [cloudinit](#requirement\_cloudinit) | >= 2 |
+| <a name="requirement_local"></a> [local](#requirement\_local) | >= 2 |
+| <a name="requirement_null"></a> [null](#requirement\_null) | >= 3 |
+| <a name="requirement_random"></a> [random](#requirement\_random) | >= 3 |
+| <a name="requirement_tls"></a> [tls](#requirement\_tls) | >= 4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6.8.0 |
-| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | n/a |
-| <a name="provider_local"></a> [local](#provider\_local) | >= 2.5.3 |
-| <a name="provider_null"></a> [null](#provider\_null) | >= 3.2.4 |
-| <a name="provider_random"></a> [random](#provider\_random) | >= 3.7.2 |
-| <a name="provider_tls"></a> [tls](#provider\_tls) | >= 4.1.0 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | >= 6 |
+| <a name="provider_cloudinit"></a> [cloudinit](#provider\_cloudinit) | >= 2 |
+| <a name="provider_local"></a> [local](#provider\_local) | >= 2 |
+| <a name="provider_null"></a> [null](#provider\_null) | >= 3 |
+| <a name="provider_random"></a> [random](#provider\_random) | >= 3 |
+| <a name="provider_tls"></a> [tls](#provider\_tls) | >= 4 |
 
 ## Modules
 
@@ -177,15 +178,18 @@ Reference for CloudHSM CLI commands:
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input__metadata"></a> [\_metadata](#input\_\_metadata) | n/a | <pre>object({<br/>    actor      = string # Github actor (deployer) of the deployment<br/>    catalog_id = string # SLT catalog id of this module<br/>    deployment = string # slt-<catalod_id>-<repo>-<actor><br/>    ref        = string # Git reference of the deployment<br/>    ref_name   = string # Git ref_name (branch) of the deployment<br/>    repo       = string # GitHub short repository name (without owner) of the deployment<br/>    repository = string # GitHub full repository name (including owner) of the deployment<br/>    sha        = string # Git (full-length, 40 char) commit SHA of the deployment<br/>    short_name = string # slt-<catalog_id>-<actor><br/>    time       = string # Timestamp of the deployment<br/>  })</pre> | <pre>{<br/>  "actor": "",<br/>  "catalog_id": "",<br/>  "deployment": "",<br/>  "ref": "",<br/>  "ref_name": "",<br/>  "repo": "",<br/>  "repository": "",<br/>  "sha": "",<br/>  "short_name": "",<br/>  "time": ""<br/>}</pre> | no |
+| <a name="input__metadata"></a> [\_metadata](#input\_\_metadata) | Select metadata passed from GitHub Workflows | <pre>object({<br/>    actor      = string # Github actor (deployer) of the deployment<br/>    catalog_id = string # SLT catalog id of this module<br/>    deployment = string # slt-<catalod_id>-<repo>-<actor><br/>    ref        = string # Git reference of the deployment<br/>    ref_name   = string # Git ref_name (branch) of the deployment<br/>    repo       = string # GitHub short repository name (without owner) of the deployment<br/>    repository = string # GitHub full repository name (including owner) of the deployment<br/>    sha        = string # Git (full-length, 40 char) commit SHA of the deployment<br/>    short_name = string # slt-<catalog_id>-<actor><br/>    time       = string # Timestamp of the deployment<br/>  })</pre> | <pre>{<br/>  "actor": "",<br/>  "catalog_id": "",<br/>  "deployment": "",<br/>  "ref": "",<br/>  "ref_name": "",<br/>  "repo": "",<br/>  "repository": "",<br/>  "sha": "",<br/>  "short_name": "",<br/>  "time": ""<br/>}</pre> | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output__default_tags"></a> [\_default\_tags](#output\_\_default\_tags) | n/a |
-| <a name="output__metadata"></a> [\_metadata](#output\_\_metadata) | n/a |
-| <a name="output__name_tag"></a> [\_name\_tag](#output\_\_name\_tag) | n/a |
+| <a name="output__default_tags"></a> [\_default\_tags](#output\_\_default\_tags) | Default tags to be used in Terraform provider, cf. providers.tf |
+| <a name="output__deployment"></a> [\_deployment](#output\_\_deployment) | Value to be used as name property of your resources. If you happen to have multiple resources of the same type, append your <I>-purpose</I> to the <I>\_deployment</I> value. |
+| <a name="output__metadata"></a> [\_metadata](#output\_\_metadata) | Select metadata passed from GitHub Workflows |
+| <a name="output__name_tag"></a> [\_name\_tag](#output\_\_name\_tag) | Name to be used as name property of your resources. OBSOLETE. Use local.\_deployment instead. |
+| <a name="output__slt_172_16_vpc_cidr"></a> [\_slt\_172\_16\_vpc\_cidr](#output\_\_slt\_172\_16\_vpc\_cidr) | CIDR to be used if new VPCs need to be created |
+| <a name="output__slt_172_31_subnet_cidr"></a> [\_slt\_172\_31\_subnet\_cidr](#output\_\_slt\_172\_31\_subnet\_cidr) | Subnet CIDR to be used for subnets in the default VPC |
 | <a name="output_admin_password"></a> [admin\_password](#output\_admin\_password) | n/a |
 | <a name="output_kmsuser_password"></a> [kmsuser\_password](#output\_kmsuser\_password) | n/a |
 <!-- END_TF_DOCS -->

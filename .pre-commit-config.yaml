@@ -20,15 +20,15 @@ repos:
       args:
         - --args=--output-file=README.new
         - --args=--output-mode=inject
-    # - id: terraform_tflint
+    - id: terraform_tflint
     # - id: terraform_trivy
-    # - id: terraform_validate
-    #   args:
-    #     - --hook-config=--retry-once-with-cleanup=true
-    #     - --tf-init-args=-backend=false
-    # - id: terraform_checkov
+    - id: terraform_validate
       args:
-        - --args=--quiet
+        - --hook-config=--retry-once-with-cleanup=true
+        - --tf-init-args=-backend=false
+    # - id: terraform_checkov
+    #   args:
+    #     - --args=--quiet
 - repo: https://github.com/gitleaks/gitleaks
   rev: a248f9279b38aeff5bbd4c85cc6f15b64d27e794  # frozen: v8.27.0
   hooks:
