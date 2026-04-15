@@ -20,8 +20,9 @@ echo "connecting - can take up to 30mins"
 
 aws kms connect-custom-key-store --custom-key-store-id "${keystore_id}"
 
-while [ "$CONNECTION_STATE" != "CONNECTED" ] ; do
-    sleep 10
+seconds=0
+
+while [ $seconds -lt 3600 ] ; do
     CONNECTION_STATE=$(
     aws kms describe-custom-key-stores \
         --custom-key-store-id "${keystore_id}" \
@@ -30,6 +31,10 @@ while [ "$CONNECTION_STATE" != "CONNECTED" ] ; do
     2> /dev/null
     )
     echo connection state: $CONNECTION_STATE
+    [ "$CONNECTION_STATE" = "CONNECTED" ] && break
+    [ "$CONNECTION_STATE" = "FAILED" ]    && exit 1
+    seconds=$((seconds + 10))
+    sleep 10
 done
 
 echo "END ---- $(basename $0)"
