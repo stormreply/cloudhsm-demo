@@ -1,6 +1,6 @@
 resource "null_resource" "copy_customer_ca_crt" {
   triggers = {
-    name = local._name_tag
+    name = local._deployment
   }
   provisioner "local-exec" {
     when    = create

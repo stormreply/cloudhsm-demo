@@ -1,7 +1,7 @@
 locals {
   cloud_hsm_cluster_id = aws_cloudhsm_v2_cluster.cluster.cluster_id
   # make custom_key_store_name more unique, as it will stay if not empty
-  custom_key_store_name = "${local._name_tag}-${split("-", local.cloud_hsm_cluster_id)[1]}"
+  custom_key_store_name = "${local._deployment}-${split("-", local.cloud_hsm_cluster_id)[1]}"
 }
 
 resource "aws_kms_custom_key_store" "cloudhsm" {

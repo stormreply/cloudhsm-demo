@@ -5,7 +5,7 @@ module "controller" {
   source           = "git::https://github.com/stormreply/ssm-managed-instance.git"
   providers        = { aws = aws.controller }
   key_name         = aws_key_pair.controller.key_name
-  name             = "${local._name_tag}-controller"
+  name             = "${local._deployment}-controller"
   policies         = [aws_iam_policy.controller.arn]
   root_volume_size = 50
   user_data_base64 = base64encode(trimspace(data.cloudinit_config.controller.rendered))
