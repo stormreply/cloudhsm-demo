@@ -184,12 +184,7 @@ Reference for CloudHSM CLI commands:
 
 | Name | Description |
 |------|-------------|
-| <a name="output__default_tags"></a> [\_default\_tags](#output\_\_default\_tags) | Default tags to be used in Terraform provider, cf. providers.tf |
-| <a name="output__deployment"></a> [\_deployment](#output\_\_deployment) | Value to be used as name property of your resources. If you happen to have multiple resources of the same type, append your <I>-purpose</I> to the <I>\_deployment</I> value. |
-| <a name="output__metadata"></a> [\_metadata](#output\_\_metadata) | Select metadata passed from GitHub Workflows |
-| <a name="output__name_tag"></a> [\_name\_tag](#output\_\_name\_tag) | Name to be used as name property of your resources. OBSOLETE. Use local.\_deployment instead. |
-| <a name="output__slt_172_16_vpc_cidr"></a> [\_slt\_172\_16\_vpc\_cidr](#output\_\_slt\_172\_16\_vpc\_cidr) | CIDR to be used if new VPCs need to be created |
-| <a name="output__slt_172_31_subnet_cidr"></a> [\_slt\_172\_31\_subnet\_cidr](#output\_\_slt\_172\_31\_subnet\_cidr) | Subnet CIDR to be used for subnets in the default VPC |
+| <a name="output__slt_config"></a> [\_slt\_config](#output\_\_slt\_config) | Map of SLT configuration |
 | <a name="output_admin_password"></a> [admin\_password](#output\_admin\_password) | n/a |
 | <a name="output_kmsuser_password"></a> [kmsuser\_password](#output\_kmsuser\_password) | n/a |
 <!-- END_TF_DOCS -->
