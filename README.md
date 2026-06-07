@@ -2,6 +2,12 @@
 
 An AWS CloudHSM cluster demo with KMS Custom Key Store integration
 
+[![Check](https://github.com/stormreply/cloudhsm-demo/actions/workflows/check.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/check.yaml)
+[![Plan](https://github.com/stormreply/cloudhsm-demo/actions/workflows/plan.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/plan.yaml)
+[![Apply](https://github.com/stormreply/cloudhsm-demo/actions/workflows/apply.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/apply.yaml)
+[![Test](https://github.com/stormreply/cloudhsm-demo/actions/workflows/test.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/test.yaml)
+[![Destroy](https://github.com/stormreply/cloudhsm-demo/actions/workflows/destroy.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/destroy.yaml)
+
 #### Storm Library for Terraform
 
 This repository is a member of the SLT | Storm Library for Terraform,
@@ -20,7 +26,7 @@ This demo can be built using GitHub Actions. In order to do so
 - [Install the Storm Library for Terraform](https://github.com/stormreply/storm-library-for-terraform/blob/main/docs/INSTALL-LIBRARY.md)
 - [Deploy this member repository](https://github.com/stormreply/storm-library-for-terraform/blob/main/docs/DEPLOY-MEMBER.md)
 
-Deployment of this member will take 40-50 minutes on GitHub resources.
+Deployment of this member should take less than 50 minutes on GitHub resources.
 
 Below is a list of resources taking particularly long to deploy:
 
@@ -32,7 +38,7 @@ Below is a list of resources taking particularly long to deploy:
 
 ## Architecture
 
-[Image]
+![Architecture](assets/architecture.drawio.svg)
 
 ## Explore this demo
 
