@@ -28,7 +28,7 @@ This demo can be built using GitHub Actions. In order to do so
 
 Deployment of this member should take less than 50 minutes on GitHub resources.
 
-Below is a list of resources taking particularly long to deploy:
+These resources will take particularly long to deploy:
 
 <table>
   <tr><td>aws_cloudhsm_v2_hsm</td><td>up to 10 minutes</td></tr>
