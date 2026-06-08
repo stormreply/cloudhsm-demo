@@ -25,11 +25,3 @@ resource "aws_secretsmanager_secret_version" "password" {
   secret_id     = aws_secretsmanager_secret.password[each.key].id
   secret_string = random_string.password[each.key].result
 }
-
-output "admin_password" {
-  value = random_string.password["admin"].result
-}
-
-output "kmsuser_password" {
-  value = random_string.password["kmsuser"].result
-}

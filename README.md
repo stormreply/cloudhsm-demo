@@ -1,3 +1,4 @@
+### Storm Library for Terraform
 # SLT - CloudHSM Demo
 
 An AWS CloudHSM cluster demo with KMS Custom Key Store integration
@@ -7,8 +8,6 @@ An AWS CloudHSM cluster demo with KMS Custom Key Store integration
 [![Apply](https://github.com/stormreply/cloudhsm-demo/actions/workflows/apply.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/apply.yaml)
 [![Test](https://github.com/stormreply/cloudhsm-demo/actions/workflows/test.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/test.yaml)
 [![Destroy](https://github.com/stormreply/cloudhsm-demo/actions/workflows/destroy.yaml/badge.svg)](https://github.com/stormreply/cloudhsm-demo/actions/workflows/destroy.yaml)
-
-#### Storm Library for Terraform
 
 This repository is a member of the SLT | Storm Library for Terraform,
 a collection of Terraform modules for Amazon Web Services. The focus
@@ -116,10 +115,8 @@ Reference for CloudHSM CLI commands:
 - https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-getting-started-use.html
 - https://docs.aws.amazon.com/cloudhsm/latest/userguide/cloudhsm_cli-reference.html
 
-## Terraform Docs
-
 <details>
-<summary>Click to show</summary>
+<summary><h2>Terraform Docs</h2></summary>
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
@@ -191,8 +188,7 @@ Reference for CloudHSM CLI commands:
 | Name | Description |
 |------|-------------|
 | <a name="output__slt_config"></a> [\_slt\_config](#output\_\_slt\_config) | Map of SLT configuration |
-| <a name="output_admin_password"></a> [admin\_password](#output\_admin\_password) | n/a |
-| <a name="output_kmsuser_password"></a> [kmsuser\_password](#output\_kmsuser\_password) | n/a |
+| <a name="output__summary"></a> [\_summary](#output\_\_summary) | Key-value pairs to be published in the GITHUB\_STEP\_SUMMARY |
 <!-- END_TF_DOCS -->
 
 </details>
